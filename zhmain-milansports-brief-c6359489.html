@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>米兰体育 · 信息索引与资料整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fbe9d2 0%, #f7d9b8 40%, #f0cba0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.7;
+            color: #2d2a24;
+        }
+
+        .wrap {
+            max-width: 1080px;
+            width: 100%;
+        }
+
+        /* hero 区 */
+        .hero {
+            background: linear-gradient(135deg, #fff5e6 0%, #faead6 100%);
+            border-radius: 40px;
+            padding: 3rem 2.5rem 2.8rem;
+            box-shadow: 0 12px 30px rgba(160, 110, 60, 0.18);
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #5f3d28;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            color: #7b5e48;
+            background: rgba(255, 230, 200, 0.5);
+            display: inline-block;
+            padding: 0.3rem 1.4rem;
+            border-radius: 50px;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 1.6rem;
+            font-size: 1.08rem;
+            color: #3f352c;
+        }
+
+        .hero .tagline {
+            background: #dab28b70;
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            display: inline-block;
+            backdrop-filter: blur(2px);
+            font-weight: 460;
+            box-shadow: 0 2px 6px rgba(100, 60, 20, 0.08);
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: #fffcf8;
+            border-radius: 32px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 6px 18px rgba(110, 70, 30, 0.08);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 28px rgba(130, 80, 40, 0.12);
+        }
+
+        .card h2 {
+            font-size: 1.7rem;
+            font-weight: 520;
+            color: #543c2b;
+            border-left: 6px solid #e0b88a;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #674d38;
+            margin: 1.2rem 0 0.4rem;
+        }
+
+        .card p, .card li {
+            font-size: 1rem;
+            color: #3d352d;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.6rem;
+            margin-top: 0.6rem;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 1.4rem;
+        }
+
+        .card ul li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #c99f73;
+            font-size: 0.9rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+        }
+
+        .feature-item {
+            background: #fff8f0;
+            padding: 1.4rem 1.6rem;
+            border-radius: 24px;
+            box-shadow: inset 0 1px 4px rgba(255, 215, 170, 0.3);
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #5a3f2d;
+            margin-bottom: 0.2rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .faq-item {
+            background: #fffaf3;
+            border-radius: 20px;
+            padding: 1.2rem 1.6rem;
+            border: 1px solid #eedccb;
+        }
+
+        .faq-item .q {
+            font-weight: 530;
+            color: #4e3929;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item .a {
+            color: #4f4036;
+            font-size: 0.96rem;
+        }
+
+        /* 底部链接 */
+        .footer-links {
+            background: #f6e6d4;
+            border-radius: 40px;
+            padding: 1.8rem 2.2rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(100, 60, 20, 0.06);
+            margin-top: 1rem;
+        }
+
+        .footer-links p {
+            font-size: 1rem;
+            color: #4f3d2e;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-links a {
+            color: #6f4f34;
+            background: #fff9f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid #dbbd9d;
+            transition: all 0.2s;
+            display: inline-block;
+            margin: 0.15rem 0.2rem;
+        }
+
+        .footer-links a:hover {
+            background: #ecdac6;
+            color: #3d2b1e;
+            border-color: #b69270;
+            transform: scale(1.02);
+        }
+
+        .milano-link {
+            background: #dbb58b !important;
+            color: #2a1f17 !important;
+            border-color: #b9895c !important;
+            font-weight: 560;
+            padding: 0.3rem 1.4rem !important;
+            border-radius: 60px;
+        }
+
+        .milano-link:hover {
+            background: #c9a274 !important;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem 0.9rem;
+            }
+            .hero {
+                padding: 2rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .card ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .faq-item {
+                padding: 0.9rem 1rem;
+            }
+            .footer-links {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero .sub {
+                font-size: 0.95rem;
+                padding: 0.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <!-- hero 区 -->
+        <div class="hero">
+            <h1>资料整理 · 米兰体育</h1>
+            <span class="sub">信息索引 / 体育内容归档</span>
+            <p>日常浏览、收集、梳理体育资讯时，逐渐形成了一个比较顺手的信息落脚点。这里不鼓吹也不夸大，只是把一些值得留意的内容按板块放好，方便自己回看，也欢迎同好来逛。</p>
+            <div class="tagline">⚡ 从零散笔记到有序索引 · 保持轻松翻阅</div>
+        </div>
+
+        <!-- 优势区 用 grid -->
+        <div class="card">
+            <h2>为什么从这里开始整理</h2>
+            <div class="grid-2">
+                <div class="feature-item">
+                    <strong>📋 板块清爽</strong>
+                    赛事、动态、背景资料分开放，没有信息轰炸，想查什么一眼定位。
+                </div>
+                <div class="feature-item">
+                    <strong>📎 随手可及</strong>
+                    不用翻几十个书签，打开 <a href="https://zhmain-milansports.com" style="background:transparent;padding:0;border:none;color:#7a553a;text-decoration:underline;display:inline;margin:0;">米兰体育</a> 就能接着上次的脉络继续。
+                </div>
+                <div class="feature-item">
+                    <strong>🧩 内容自然生长</strong>
+                    不是一次性堆砌，而是慢慢把看到的有价值片段添加进来，保持呼吸感。
+                </div>
+                <div class="feature-item">
+                    <strong>📅 按赛季/专题归类</strong>
+                    从夏季准备到杯赛阶段，按时间轴整理，避免信息过时或被淹没。
+                </div>
+            </div>
+        </div>
+
+        <!-- 说明区：资料索引角度 -->
+        <div class="card">
+            <h2>索引说明 · 怎么用这一页</h2>
+            <p>这个页面更像一个「桌面文件夹」—— 我把常见的体育资料分成了几个大类，每个类别下面会持续补充链接、摘要和背景。当前主要板块包括：</p>
+            <ul>
+                <li>赛事日历与结果速览</li>
+                <li>球队阵容变动记录</li>
+                <li>战术 / 数据简单分析</li>
+                <li>媒体观点摘录（不做二次解读）</li>
+                <li>历史档案与经典比赛回顾</li>
+            </ul>
+            <p style="margin-top:0.8rem;">你可以把这里当成一个安静的资料架，没有弹窗也没有冗余推荐。如果某块内容你想深入了解，直接顺着索引去 <a href="https://zhmain-milansports.com" style="background:transparent;padding:0;border:none;color:#7a553a;text-decoration:underline;display:inline;margin:0;">米兰体育</a> 看完整版就好。</p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="card">
+            <h2>常见疑问 · 简短回答</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <span class="q">❓ 这里的内容更新快吗？</span>
+                    <span class="a">不算实时滚动，但关键节点（赛果、转会、伤病）会尽量在 24 小时内整理归档。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="q">❓ 可以转载或者分享吗？</span>
+                    <span class="a">这些整理内容大多来自公开信息加个人笔记，分享时注明出处就好，不用来商业用途即可。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="q">❓ 我想找某支球队的赛季数据，有吗？</span>
+                    <span class="a">目前覆盖了大部分主流联赛和杯赛，具体球队可以到主站搜索框里看看，基本都能找到对应卡片。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="q">❓ 页面会一直保留吗？</span>
+                    <span class="a">会的，这个索引页会持续存在，内容只增不减，偶尔调整分类让它更顺手。</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部链接 -->
+        <div class="footer-links">
+            <p>📌 回到主资料站 · 所有板块汇总</p>
+            <p><a href="https://zhmain-milansports.com" class="milano-link">米兰体育</a></p>
+            <p style="margin-top:0.8rem; font-size:0.85rem; color:#5f4b39;">—— 慢慢整理，好好看球 ——</p>
+        </div>
+
+    </div>
+</body>
+</html>
